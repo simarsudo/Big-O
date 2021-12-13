@@ -15,11 +15,12 @@ class LinkedList:
         temp = self.head
         while temp is not None:
             print(temp.value)
+            x = temp.value
             temp = temp.next
 
     def append(self, value):
         new_node = Node(value)
-        if self.head is None:
+        if self.head == 0:
             self.head = new_node
             self.tail = new_node
         else:
@@ -28,17 +29,40 @@ class LinkedList:
         self.length += 1
         return True
 
-    def pop(self, value):
-        if self.head is None:
-            print('Linked list is already empty')
-            return False
-        elif self.tail.next is None:
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        pre = self.head
+        while temp.next:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp.value
 
-
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head, self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
 
 
 my_kinked_list = LinkedList(4)
 
 my_kinked_list.append(5)
+my_kinked_list.append(3)
+my_kinked_list.append(2)
 
+print(my_kinked_list.print_list())
+
+my_kinked_list.prepend(6)
 print(my_kinked_list.print_list())
