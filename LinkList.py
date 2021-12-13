@@ -96,6 +96,20 @@ class LinkedList:
         self.length += 1
         return True
 
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length:
+            return self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
 
 my_kinked_list = LinkedList(0)
 my_kinked_list.append(1)
@@ -103,7 +117,8 @@ my_kinked_list.append(2)
 my_kinked_list.append(3)
 
 
-my_kinked_list.insert(1, 69)
+print(my_kinked_list.remove(3))
+
 print(my_kinked_list.print_list())
 
 
