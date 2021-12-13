@@ -55,14 +55,26 @@ class LinkedList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        self.length -= 1
+        if self.length == 0:
+            self.tail = None
+        return temp
+
+
+
 
 my_kinked_list = LinkedList(4)
 
 my_kinked_list.append(5)
 my_kinked_list.append(3)
-my_kinked_list.append(2)
 
-print(my_kinked_list.print_list())
+print(my_kinked_list.pop_first())
 
-my_kinked_list.prepend(6)
+print(my_kinked_list.pop_first(), '\n')
+
 print(my_kinked_list.print_list())
