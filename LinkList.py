@@ -15,7 +15,6 @@ class LinkedList:
         temp = self.head
         while temp is not None:
             print(temp.value)
-            x = temp.value
             temp = temp.next
 
     def append(self, value):
