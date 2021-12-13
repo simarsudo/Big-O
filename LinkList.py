@@ -65,16 +65,31 @@ class LinkedList:
             self.tail = None
         return temp
 
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
+
+    def set_value(self, index, value):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
 
 
-
-my_kinked_list = LinkedList(4)
-
-my_kinked_list.append(5)
+my_kinked_list = LinkedList(0)
+my_kinked_list.append(1)
+my_kinked_list.append(2)
 my_kinked_list.append(3)
 
-print(my_kinked_list.pop_first())
 
-print(my_kinked_list.pop_first(), '\n')
-
+my_kinked_list.set_value(2, 69)
 print(my_kinked_list.print_list())
+
+
