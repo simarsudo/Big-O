@@ -119,14 +119,3 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-
-
-my_kinked_list = LinkedList(0)
-my_kinked_list.append(1)
-my_kinked_list.append(2)
-my_kinked_list.append(3)
-
-my_kinked_list.reverse()
-print(my_kinked_list.print_list())
-
-
