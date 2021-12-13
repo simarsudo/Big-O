@@ -110,15 +110,23 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    def reverse(self):
+        temp = self.head
+        self.head, self.tail = self.tail, self.head
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
 
 my_kinked_list = LinkedList(0)
 my_kinked_list.append(1)
 my_kinked_list.append(2)
 my_kinked_list.append(3)
 
-
-print(my_kinked_list.remove(3))
-
+my_kinked_list.reverse()
 print(my_kinked_list.print_list())
 
 
