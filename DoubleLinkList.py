@@ -79,7 +79,7 @@ class DoubleLinkedList:
         if index < self.length / 2:
             temp = self.head
             for _ in range(index):
-                temp.next
+                temp = temp.next
             return temp
         else:
             temp = self.tail
@@ -111,13 +111,19 @@ class DoubleLinkedList:
         self.length += 1
         return True
 
+    def remove(self, index):
+        if self.length < index < 0:
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        temp = self.get_value(index)
+        after = temp.next
+        before = temp.prev
+        before.next = after
+        after.prev = before
+        temp.next, temp.prev = None, None
+        self.length -= 1
+        return temp
 
-# Test
-my_double_link_list = DoubleLinkedList(7)
-my_double_link_list.append(1)
-my_double_link_list.append(15)
-my_double_link_list.append(19)
-
-print(my_double_link_list.print_list())
-my_double_link_list.insert(3, 100)
-print(my_double_link_list.print_list())
