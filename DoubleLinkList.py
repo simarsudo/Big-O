@@ -73,6 +73,20 @@ class DoubleLinkedList:
         self.length -= 1
         return temp
 
+    def get_value(self, index):
+        if self.length == 0:
+            return None
+        if index < self.length/2:
+            temp = self.head
+            for _ in range(index):
+                temp.next
+            return temp.value
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                temp = temp.prev
+            return temp.value
+
 
 # Test
 my_double_link_list = DoubleLinkedList(7)
@@ -80,8 +94,5 @@ my_double_link_list.append(1)
 my_double_link_list.append(15)
 my_double_link_list.append(19)
 
-print(my_double_link_list.print_list())
 
-my_double_link_list.pop_first()
-my_double_link_list.pop_first()
-print(my_double_link_list.print_list())
+print(my_double_link_list.get_value(0))
