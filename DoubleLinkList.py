@@ -59,6 +59,20 @@ class DoubleLinkedList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        if self.head is None:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
+        self.length -= 1
+        return temp
+
 
 # Test
 my_double_link_list = DoubleLinkedList(7)
@@ -68,6 +82,6 @@ my_double_link_list.append(19)
 
 print(my_double_link_list.print_list())
 
-my_double_link_list.prepend(69)
-my_double_link_list.prepend(420)
+my_double_link_list.pop_first()
+my_double_link_list.pop_first()
 print(my_double_link_list.print_list())
