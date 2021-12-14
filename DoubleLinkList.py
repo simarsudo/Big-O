@@ -74,18 +74,42 @@ class DoubleLinkedList:
         return temp
 
     def get_value(self, index):
-        if self.length == 0:
+        if self.head is None:
             return None
-        if index < self.length/2:
+        if index < self.length / 2:
             temp = self.head
             for _ in range(index):
                 temp.next
-            return temp.value
+            return temp
         else:
             temp = self.tail
             for _ in range(self.length - 1, index, -1):
                 temp = temp.prev
-            return temp.value
+            return temp
+
+    def set_value(self, index, value):
+        temp = self.get_value(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+    def insert(self, index, value):
+        if self.length < index < 0:
+            return False
+        if index == 0:
+            self.prepend(value)
+        if index == self.length:
+            self.append(value)
+        new_node = Node(value)
+        before = self.get_value(index - 1)
+        after = before.next
+        before.next = new_node
+        new_node.next = after
+        after.prev = new_node
+        new_node.prev = before
+        self.length += 1
+        return True
 
 
 # Test
@@ -94,5 +118,6 @@ my_double_link_list.append(1)
 my_double_link_list.append(15)
 my_double_link_list.append(19)
 
-
-print(my_double_link_list.get_value(0))
+print(my_double_link_list.print_list())
+my_double_link_list.insert(3, 100)
+print(my_double_link_list.print_list())
