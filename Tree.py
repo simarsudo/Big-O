@@ -31,8 +31,6 @@ class BinarySearchTree:
 
     def contains(self, value):
         new_node = Node(value)
-        if self.root is None:
-            return False
         temp = self.root
         while temp is not None:
             if new_node.value < temp.value:
