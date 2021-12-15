@@ -33,9 +33,3 @@ class Stack:
         temp.next = None
         self.height -= 1
         return temp
-
-
-my_stack = Stack(1)
-my_stack.pop()
-my_stack.pop()
-print(my_stack.print_stack())
