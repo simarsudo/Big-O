@@ -35,9 +35,3 @@ class HashTable:
         return all_keys
 
 
-my_hash_table = HashTable()
-
-my_hash_table.set_item('bolts', 1400)
-my_hash_table.set_item('washers', 50)
-
-print(my_hash_table.keys())
