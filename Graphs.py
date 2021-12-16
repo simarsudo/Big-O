@@ -29,18 +29,12 @@ class Graphs:
             pass
         return False
 
+    def remove_vertex(self, vertex):
+        if vertex in self.adj_list.keys():
+            for other_vertex in self.adj_list[vertex]:
+                self.adj_list[other_vertex].remove(vertex)
+            del self.adj_list[vertex]
+            return True
+        return False
 
-mygraph = Graphs()
 
-mygraph.add_vertex('A')
-mygraph.add_vertex('B')
-mygraph.add_vertex('C')
-mygraph.add_vertex('D')
-
-mygraph.add_edge('A', 'B')
-mygraph.add_edge('B', 'C')
-mygraph.add_edge('C', 'A')
-
-mygraph.remove_edge('D', 'A')
-
-mygraph.print_graphs()
