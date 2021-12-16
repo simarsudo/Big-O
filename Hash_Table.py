@@ -1,5 +1,5 @@
 class HashTable:
-    def __init__(self, size = 7):
+    def __init__(self, size=7):
         self.data_map = [None] * size
 
     def __hash(self, key):
@@ -9,6 +9,20 @@ class HashTable:
         return my_hash
 
     def print_table(self):
-        for n, value in enumerate(self.data_map)
+        for n, value in enumerate(self.data_map):
             print(n, ": ", value)
 
+    def set_item(self, key, value):
+        index = self.__hash(key)
+        if self.data_map[index] is None:
+            self.data_map[index] = []
+        self.data_map[index].append([key, value])
+
+
+my_hash_table = HashTable()
+
+my_hash_table.set_item('bolts', 1400)
+my_hash_table.set_item('washers', 50)
+my_hash_table.set_item('lumbers', 70)
+
+my_hash_table.print_table()
