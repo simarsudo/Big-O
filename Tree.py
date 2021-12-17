@@ -46,7 +46,7 @@ class BinarySearchTree:
             current_node = current_node.left
         return current_node
 
-    def BFS(self):
+    def bfs(self):
         current_node = self.root
         queue = []
         results = []
@@ -61,4 +61,27 @@ class BinarySearchTree:
                 queue.append(current_node.right)
         return results
 
+    def bsf_pre_order(self):
+        results = []
 
+        def transverse(current_node):
+            results.append(current_node.value)
+            if current_node.left is not None:
+                transverse(current_node.left)
+            if current_node.right is not None:
+                transverse(current_node.right)
+
+        transverse(self.root)
+        return results
+
+
+my_tree = BinarySearchTree()
+my_tree.insert(52)
+my_tree.insert(12)
+my_tree.insert(32)
+my_tree.insert(43)
+my_tree.insert(4)
+my_tree.insert(65)
+my_tree.insert(82)
+
+print(my_tree.bsf_pre_order())
